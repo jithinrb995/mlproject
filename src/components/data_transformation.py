@@ -24,7 +24,7 @@ class DataTransformation:
 
     def get_data_transformer_object(self):
         '''
-        This function si responsible for data trnasformation
+        This function is responsible for data trnasformation
         
         '''
         try:
@@ -40,7 +40,7 @@ class DataTransformation:
             num_pipeline= Pipeline(
                 steps=[
                 ("imputer",SimpleImputer(strategy="median")),
-                ("scaler",StandardScaler())
+                ("scaler",StandardScaler(with_mean=False))
 
                 ]
             )
@@ -118,7 +118,7 @@ class DataTransformation:
             return (
                 train_arr,
                 test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path,
+                self.data_transformation_config.preprocessor_obj_file_path
             )
         except Exception as e:
             raise CustomException(e,sys)
